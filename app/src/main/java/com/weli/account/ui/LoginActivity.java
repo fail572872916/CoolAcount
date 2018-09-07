@@ -1,11 +1,11 @@
 package com.weli.account.ui;
 
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 
 import com.weli.account.R;
 import com.weli.account.bean.MyUser;
@@ -58,8 +58,10 @@ public class LoginActivity extends BaseActivity implements UserLogView {
 
     }
 
-    //监听密码输入框的聚焦事件
-    @OnFocusChange({R.id.login_et_password,R.id.login_et_rpassword})
+    /**
+     * 监听密码输入框的聚焦事件
+     */
+    @OnFocusChange({R.id.login_et_password, R.id.login_et_rpassword})
     public void onFocusChange(View view, boolean b) {
         if (b) {
             mOwlView.open();
@@ -76,14 +78,16 @@ public class LoginActivity extends BaseActivity implements UserLogView {
     @OnClick({R.id.login_tv_sign, R.id.login_btn_login, R.id.login_tv_forget})
     protected void onClick(View view) {
         switch (view.getId()) {
-            case R.id.login_btn_login:  //button
+            //button
+            case R.id.login_btn_login:
                 if (isLogin) {
                     login();  //登陆
                 } else {
                     sign();  //注册
                 }
                 break;
-            case R.id.login_tv_sign:  //sign
+            //sign
+            case R.id.login_tv_sign:
                 if (isLogin) {
                     //置换注册界面
                     signTV.setText("Login");
@@ -99,8 +103,8 @@ public class LoginActivity extends BaseActivity implements UserLogView {
                 }
                 isLogin = !isLogin;
                 break;
-
-            case R.id.login_tv_forget:  //忘记密码
+//忘记密码
+            case R.id.login_tv_forget:
                 startActivity(new Intent(mContext, ForgetPasswordActivity.class));
                 break;
 
@@ -115,13 +119,11 @@ public class LoginActivity extends BaseActivity implements UserLogView {
     public void login() {
         String username = usernameET.getText().toString();
         String password = passwordET.getText().toString();
-        if (username.length() == 0 || password.length() == 0) {
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             SnackbarUtils.show(mContext, "用户名或密码不能为空");
             return;
         }
-
         ProgressUtils.show(this, "正在登陆...");
-
         userLogPresenter.login(username, password);
     }
 
@@ -133,7 +135,7 @@ public class LoginActivity extends BaseActivity implements UserLogView {
         String username = usernameET.getText().toString();
         String password = passwordET.getText().toString();
         String rpassword = rpasswordET.getText().toString();
-        if (email.length() == 0 || username.length() == 0 || password.length() == 0 || rpassword.length() == 0) {
+        if (TextUtils.isEmpty(email)|| TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||TextUtils.isEmpty(rpassword)) {
             SnackbarUtils.show(mContext, "请填写必要信息");
             return;
         }
@@ -148,7 +150,7 @@ public class LoginActivity extends BaseActivity implements UserLogView {
 
         ProgressUtils.show(this, "正在注册...");
 
-        userLogPresenter.signup(username,password,email);
+        userLogPresenter.signup(username, password, email);
 
     }
 
@@ -158,7 +160,7 @@ public class LoginActivity extends BaseActivity implements UserLogView {
         if (isLogin) {
             setResult(RESULT_OK, new Intent());
             finish();
-        }else {
+        } else {
             SnackbarUtils.show(mContext, "注册成功");
         }
 

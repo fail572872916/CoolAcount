@@ -147,7 +147,7 @@
 
     </LinearLayout>
 
-    <com.copasso.cocobill.widget.OwlView
+    <com.weli.account.weight.OwlView
         android:id="@+id/owl_view"
         android:layout_width="175dp"
         android:layout_height="107dp"
