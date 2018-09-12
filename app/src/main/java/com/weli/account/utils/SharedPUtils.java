@@ -67,8 +67,9 @@ public class SharedPUtils {
         SharedPreferences sp = context.getSharedPreferences(USER_SETTING, Context.MODE_PRIVATE);
         boolean isFirst= sp.getBoolean("first", true);
         //第一次则修改记录
-        if(isFirst)
+        if(isFirst) {
             sp.edit().putBoolean("first", false).commit();
+        }
         return isFirst;
     }
 }
