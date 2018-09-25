@@ -6,7 +6,6 @@ import com.daimajia.androidanimations.library.Techniques;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
-import com.weli.account.MainActivity;
 import com.weli.account.R;
 import com.weli.account.utils.ThemeManager;
 

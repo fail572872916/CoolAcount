@@ -24,6 +24,8 @@ import com.weli.account.R;
 import com.weli.account.bean.MyUser;
 import com.weli.account.common.Constants;
 import com.weli.account.utils.SharedPUtils;
+import com.weli.account.utils.SnackbarUtils;
+import com.weli.account.utils.ThemeManager;
 
 import java.util.List;
 
@@ -83,10 +85,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //        viewPager.setAdapter(mainFragmentPagerAdapter);
 
         //初始化TabLayout
-        tabLayout.addTab(tabLayout.newTab().setText("明细"));
-        tabLayout.addTab(tabLayout.newTab().setText("报表"));
-        tabLayout.addTab(tabLayout.newTab().setText("卡片"));
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.addTab(tabLayout.newTab().setText("明细"));
+//        tabLayout.addTab(tabLayout.newTab().setText("报表"));
+//        tabLayout.addTab(tabLayout.newTab().setText("卡片"));
+//        tabLayout.setupWithViewPager(viewPager);
 
         //初始化Toolbar
         toolbar.setTitle("CocoBill");
@@ -95,26 +97,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-//
-//        drawerHeader = navigationView.inflateHeaderView(R.layout.drawer_header);
-//        drawerIv = (ImageView) drawerHeader.findViewById(R.id.drawer_iv);
-//        drawerTvAccount = (TextView) drawerHeader.findViewById(R.id.drawer_tv_name);
-//        drawerTvMail = (TextView) drawerHeader.findViewById(R.id.drawer_tv_mail);
-        //监听点击登陆事件
-//        drawerHeader.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//                drawer.closeDrawer(GravityCompat.START);
-//                if (currentUser==null) {
-//                    //用户id为0表示未有用户登陆
-//                    startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGINACTIVITY_CODE);
-//                } else {
-//                    //进入账户中心
+
+        drawerHeader = navigationView.inflateHeaderView(R.layout.drawer_header);
+        drawerIv = (ImageView) drawerHeader.findViewById(R.id.drawer_iv);
+        drawerTvAccount = (TextView) drawerHeader.findViewById(R.id.drawer_tv_name);
+        drawerTvMail = (TextView) drawerHeader.findViewById(R.id.drawer_tv_mail);
+//        监听点击登陆事件
+        drawerHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                drawer.closeDrawer(GravityCompat.START);
+                if (currentUser==null) {
+                    //用户id为0表示未有用户登陆
+                    startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGINACTIVITY_CODE);
+                } else {
+                    //进入账户中心
 //                    startActivityForResult(new Intent(MainActivity.this, UserInfoActivity.class), USERINFOACTIVITY_CODE);
-//                }
-//            }
-//        });
+                }
+            }
+        });
         //设置头部账户
         setDrawerHeaderAccount();
         //监听侧滑菜单
@@ -142,17 +144,17 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     /**
      * 显示修改主题色 Dialog
      */
-//    private void showUpdateThemeDialog() {
-//        final String[] themes = ThemeManager.getInstance().getThemes();
-//        new AlertDialog.Builder(mContext)
-//                .setTitle("选择主题")
-//                .setItems(themes, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        ThemeManager.getInstance().setTheme(mContext, themes[which]);
-//                    }
-//                }).create().show();
-//    }
+    private void showUpdateThemeDialog() {
+        final String[] themes = ThemeManager.getInstance().getThemes();
+        new AlertDialog.Builder(mContext)
+                .setTitle("选择主题")
+                .setItems(themes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ThemeManager.getInstance().setTheme(mContext, themes[which]);
+                    }
+                }).create().show();
+    }
 
     /**
      * 监听Drawer
@@ -211,45 +213,46 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.nav_account) {      //账户
-//            // Handle the camera action
-//            viewPager.setCurrentItem(0);
-//        } else if (id == R.id.nav_month) {
-//            viewPager.setCurrentItem(1);
-//        } else if (id == R.id.nav_total) {
-//            viewPager.setCurrentItem(2);
-//        } else if (id == R.id.nav_sync) {   //同步账单
-//            if(currentUser==null)
-//                SnackbarUtils.show(mContext,"请先登陆");
-//            else
+        int id = item.getItemId();
+        if (id == R.id.nav_account) {      //账户
+            // Handle the camera action
+            viewPager.setCurrentItem(0);
+        } else if (id == R.id.nav_month) {
+            viewPager.setCurrentItem(1);
+        } else if (id == R.id.nav_total) {
+            viewPager.setCurrentItem(2);
+        } else if (id == R.id.nav_sync) {   //同步账单
+            if(currentUser==null) {
+                SnackbarUtils.show(mContext,"请先登陆");
+            } else {
 //                BmobRepository.getInstance().syncBill(currentUser.getObjectId());
-//        }  else if (id == R.id.nav_setting) {   //设置
+            }
+        }  else if (id == R.id.nav_setting) {   //设置
 //            startActivity(new Intent(this,SettingActivity.class));
-//        } else if (id == R.id.nav_about) {     //关于
+        } else if (id == R.id.nav_about) {     //关于
 //            startActivity(new Intent(MainActivity.this, AboutActivity.class));
-//        } else if (id == R.id.nav_theme) {     //主题
-//            showUpdateThemeDialog();
-//        } else if (id == R.id.nav_exit) {      //退出登陆
-//            //退出登陆
-//            new AlertDialog.Builder(mContext).setTitle("是否退出当前账户")
-//                    .setNegativeButton("取消", null)
-//                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            MyUser.logOut();
-//                            //清除本地数据
+        } else if (id == R.id.nav_theme) {     //主题
+            showUpdateThemeDialog();
+        } else if (id == R.id.nav_exit) {      //退出登陆
+            //退出登陆
+            new AlertDialog.Builder(mContext).setTitle("是否退出当前账户")
+                    .setNegativeButton("取消", null)
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            MyUser.logOut();
+                            //清除本地数据
 //                            LocalRepository.getInstance().deleteAllBills();
-//                            //刷新账户数据
-//                            //setDrawerHeaderAccount();
-//                            initEventAndData();
-//                        }
-//                    })
-//                    .show();
-//        }
-//
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        drawer.closeDrawer(GravityCompat.START);
+                            //刷新账户数据
+                            //setDrawerHeaderAccount();
+                            initEventAndData();
+                        }
+                    })
+                    .show();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
