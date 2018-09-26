@@ -53,7 +53,6 @@ public class LoginActivity extends BaseActivity implements UserLogView {
 
     @Override
     protected void initEventAndData() {
-
         userLogPresenter = new UserLogPresenterImp(this);
 
     }

@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //        tabLayout.setupWithViewPager(viewPager);
 
         //初始化Toolbar
-        toolbar.setTitle("CocoBill");
+        toolbar.setTitle("CoolAccount");
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -244,7 +244,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                             //清除本地数据
 //                            LocalRepository.getInstance().deleteAllBills();
                             //刷新账户数据
-                            //setDrawerHeaderAccount();
+                            setDrawerHeaderAccount();
                             initEventAndData();
                         }
                     })

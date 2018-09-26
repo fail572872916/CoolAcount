@@ -76,4 +76,7 @@
     <string name="load_login">正在登录中&#8230;</string>
     <string name="load_sign">正在注册中&#8230;</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
