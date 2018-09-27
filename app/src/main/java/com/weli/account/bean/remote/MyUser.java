@@ -1,4 +1,4 @@
-package com.weli.account.bean.local;
+package com.weli.account.bean.remote;
 
 import cn.bmob.v3.BmobUser;
 

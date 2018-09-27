@@ -43,8 +43,9 @@ public class ActivityManagerUtils {
 			copy = new ArrayList<Activity>(mActivities);
 		}
 		for (Activity activity : copy) {
-			if (activity.getClass() != except)
+			if (activity.getClass() != except) {
 				activity.finish();
+			}
 		}
 	}
 

@@ -41,8 +41,9 @@ public class SharedPUtils {
      */
     public static String getCurrentTheme(Context context) {
         SharedPreferences sp = context.getSharedPreferences(USER_SETTING, Context.MODE_PRIVATE);
-        if (sp != null)
+        if (sp != null) {
             return sp.getString("theme", "原谅绿");
+        }
         return null;
     }
 

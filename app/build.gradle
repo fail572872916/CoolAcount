@@ -1,8 +1,10 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    //noinspection GradleDependency
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.weli.account"
         minSdkVersion 15
@@ -33,7 +35,11 @@ android {
 
 
 }
-
+greendao {
+    schemaVersion 1
+    daoPackage 'com.weli.account.bean.gen'
+    targetGenDir 'src/main/java'
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -77,5 +83,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 //    implementation 'com.squareup.okio:okio:2.0.0'
     // 图片加载库
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+//    greendao
+    implementation 'org.greenrobot:greendao:3.2.2'
+    // eventbus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+
 }

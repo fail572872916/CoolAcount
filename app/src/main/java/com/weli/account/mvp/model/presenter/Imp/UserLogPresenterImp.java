@@ -1,6 +1,6 @@
 package com.weli.account.mvp.model.presenter.Imp;
 
-import com.weli.account.bean.local.MyUser;
+import com.weli.account.bean.remote.MyUser;
 import com.weli.account.mvp.model.Imp.UserLogModelImp;
 import com.weli.account.mvp.model.UserLogModel;
 import com.weli.account.mvp.model.presenter.UserLogPresenter;

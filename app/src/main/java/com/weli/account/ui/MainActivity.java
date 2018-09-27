@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.weli.account.R;
-import com.weli.account.bean.local.MyUser;
+import com.weli.account.bean.remote.MyUser;
 import com.weli.account.utils.SnackbarUtils;
 import com.weli.account.utils.ThemeManager;
 

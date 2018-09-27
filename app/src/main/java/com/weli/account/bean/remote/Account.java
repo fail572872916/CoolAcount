@@ -1,4 +1,6 @@
-package com.weli.account.bean.local;
+package com.weli.account.bean.remote;
+
+import com.weli.account.bean.local.LocalAccount;
 
 import cn.bmob.v3.BmobObject;
 
@@ -20,6 +22,35 @@ public class Account extends BmobObject {
     private String icon;
     private int type;
     private String userid;
+    private String pwd;
+
+    public Account(String account, String title, String icon, int type, String userid) {
+        Account = account;
+        this.title = title;
+        this.icon = icon;
+        this.type = type;
+        this.userid = userid;
+    }
+
+
+    public Account(String tableName, String account, String title, String icon, int type, String userid) {
+        super(tableName);
+        Account = account;
+        this.title = title;
+        this.icon = icon;
+        this.type = type;
+        this.userid = userid;
+    }
+
+    public Account(LocalAccount tableName) {
+        this.Account = tableName.getAccount();
+        this.icon = tableName.getIcon();
+        this.title = tableName.getTitle();
+        this.type = tableName.getType();
+        this.userid = tableName.getUserid();
+        this.pwd = tableName.getPwd();
+    }
+
 
     public String getUserid() {
         return userid;
@@ -61,5 +92,11 @@ public class Account extends BmobObject {
         this.type = type;
     }
 
+    public String getPwd() {
+        return pwd;
+    }
 
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

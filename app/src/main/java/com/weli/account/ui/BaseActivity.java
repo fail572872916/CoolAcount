@@ -19,7 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.weli.account.bean.local.MyUser;
+import com.weli.account.bean.remote.MyUser;
 import com.weli.account.utils.ActivityManagerUtils;
 import com.weli.account.utils.ThemeManager;
 
