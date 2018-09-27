@@ -1,4 +1,4 @@
-package com.weli.account.bean;
+package com.weli.account.bean.local;
 
 import cn.bmob.v3.BmobObject;
 

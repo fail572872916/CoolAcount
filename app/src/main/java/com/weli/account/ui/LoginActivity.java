@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.weli.account.R;
-import com.weli.account.bean.MyUser;
+import com.weli.account.bean.local.MyUser;
 import com.weli.account.mvp.model.presenter.Imp.UserLogPresenterImp;
 import com.weli.account.mvp.model.presenter.UserLogPresenter;
 import com.weli.account.mvp.model.view.UserLogView;

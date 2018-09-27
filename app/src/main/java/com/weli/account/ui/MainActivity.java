@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,15 +18,10 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.weli.account.R;
-import com.weli.account.bean.MyUser;
-import com.weli.account.common.Constants;
-import com.weli.account.utils.SharedPUtils;
+import com.weli.account.bean.local.MyUser;
 import com.weli.account.utils.SnackbarUtils;
 import com.weli.account.utils.ThemeManager;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;

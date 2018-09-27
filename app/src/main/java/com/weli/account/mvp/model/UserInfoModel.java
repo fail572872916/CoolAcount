@@ -1,7 +1,7 @@
 package com.weli.account.mvp.model;
 
 
-import com.weli.account.bean.MyUser;
+import com.weli.account.bean.local.MyUser;
 
 public interface UserInfoModel {
 

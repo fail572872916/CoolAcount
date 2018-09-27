@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.weli.account.bean.MyUser;
+import com.weli.account.bean.local.MyUser;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

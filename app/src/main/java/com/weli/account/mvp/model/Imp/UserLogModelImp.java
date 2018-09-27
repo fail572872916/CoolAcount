@@ -1,6 +1,6 @@
 package com.weli.account.mvp.model.Imp;
 
-import com.weli.account.bean.MyUser;
+import com.weli.account.bean.local.MyUser;
 import com.weli.account.mvp.model.UserLogModel;
 
 import cn.bmob.v3.exception.BmobException;
