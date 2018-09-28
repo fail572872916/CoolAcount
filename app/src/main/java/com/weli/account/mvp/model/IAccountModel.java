@@ -1,5 +1,6 @@
 package com.weli.account.mvp.model;
 
+import com.weli.account.bean.local.LocalAccount;
 import com.weli.account.bean.remote.Account;
 
 /**
@@ -16,11 +17,11 @@ import com.weli.account.bean.remote.Account;
  */
 public interface IAccountModel {
 
-    void getAccount(String userid);
+    void getAccount();
 
-    void addAccount(Account account);
+    void addAccount(LocalAccount account);
 
-    void updateAccount(Account account);
+    void updateAccount(LocalAccount account);
 
-    void deleteAccount(Account account);
+    void deleteAccount(Long id);
 }
