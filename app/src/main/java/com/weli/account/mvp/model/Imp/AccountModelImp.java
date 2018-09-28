@@ -1,5 +1,6 @@
 package com.weli.account.mvp.model.Imp;
 
+import com.weli.account.base.BaseObserver;
 import com.weli.account.bean.BaseBean;
 import com.weli.account.bean.local.LocalAccount;
 import com.weli.account.bean.remote.Account;
@@ -40,55 +41,44 @@ public class AccountModelImp implements IAccountModel {
 
     @Override
     public void addAccount(LocalAccount account) {
+        LocalRepository.getInstance().saveBBill(account)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<LocalAccount>() {
+                    @Override
+                    protected void onSuccees(LocalAccount bBill) throws Exception {
+                        listener.onSuccess(new BaseBean());
+                    }
 
-//        account.save(new SaveListener<String>() {
-//            @Override
-//            public void done(String s, BmobException e) {
-//                if (e == null) {
-//
-//                    listener.onSuccess(new BaseBean());
-//                    Log.i("bmob", "创建数据成功：" + e.getMessage() + "," + e.getErrorCode());
-//
-//
-//                } else {
-//                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
-//                    listener.onFailure(e);
-//                }
-//            }
-//        });
+                    @Override
+                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+                        listener.onFailure(e);
+                    }
+                });
     }
 
     @Override
     public void updateAccount(LocalAccount account) {
-//        account.update(new UpdateListener() {
-//            @Override
-//            public void done(BmobException e) {
-//                if (e == null) {
-//                    listener.onSuccess(new BaseBean());
-//                    Log.i("bmob", "更新成功");
-//                } else {
-//                    listener.onFailure(e);
-//                    Log.i("bmob", "更新失败：" + e.getMessage() + "," + e.getErrorCode());
-//                }
-//            }
-//        });
+        LocalRepository.getInstance().updateBBill(account)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<LocalAccount>() {
+                    @Override
+                    protected void onSuccees(LocalAccount bBill) throws Exception {
+                        listener.onSuccess(new BaseBean());
+                    }
+
+                    @Override
+                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+                        listener.onFailure(e);
+                    }
+                });
     }
 
     @Override
     public void deleteAccount(Long id) {
-
-//        account.delete(new UpdateListener() {
-//            @Override
-//            public void done(BmobException e) {
-//                if (e == null) {
-//                    listener.onSuccess(new BaseBean());
-//                    Log.i("bmob", "删除成功");
-//                } else {
-//                    listener.onFailure(e);
-//                    Log.i("bmob", "删除失败：" + e.getMessage() + "," + e.getErrorCode());
-//                }
-//            }
-//        });
+        LocalRepository.getInstance()
+                .deleteBBillById(id);
     }
 
     /**
