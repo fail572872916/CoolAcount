@@ -23,7 +23,6 @@ public class LocalAccount {
     /**本地id*/
     private Long id;
     /**服务器端id*/
-    private String rid;
     private String Account;
     private String title;
     private String icon;
@@ -32,11 +31,10 @@ public class LocalAccount {
     private String userid;
     /**创建时间*/
     private long crdate;
-    @Generated(hash = 504954872)
-    public LocalAccount(Long id, String rid, String Account, String title,
-            String icon, int type, String pwd, String userid, long crdate) {
+    @Generated(hash = 2066236431)
+    public LocalAccount(Long id, String Account, String title, String icon,
+            int type, String pwd, String userid, long crdate) {
         this.id = id;
-        this.rid = rid;
         this.Account = Account;
         this.title = title;
         this.icon = icon;
@@ -55,12 +53,7 @@ public class LocalAccount {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getRid() {
-        return this.rid;
-    }
-    public void setRid(String rid) {
-        this.rid = rid;
-    }
+
     public String getAccount() {
         return this.Account;
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="account_type">
+        <item>论坛</item>
+        <item>游戏</item>
+        <item>社交</item>
+    </string-array>
+
+</resources>

@@ -35,8 +35,6 @@ public class AccountModelImp implements IAccountModel {
     @Override
     public void getAccount() {
         final LocalAccount note = new LocalAccount();
-
-
     }
 
     @Override
@@ -49,7 +47,6 @@ public class AccountModelImp implements IAccountModel {
                     protected void onSuccees(LocalAccount bBill) throws Exception {
                         listener.onSuccess(new BaseBean());
                     }
-
                     @Override
                     protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
                         listener.onFailure(e);
@@ -67,14 +64,12 @@ public class AccountModelImp implements IAccountModel {
                     protected void onSuccees(LocalAccount bBill) throws Exception {
                         listener.onSuccess(new BaseBean());
                     }
-
                     @Override
                     protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
                         listener.onFailure(e);
                     }
                 });
     }
-
     @Override
     public void deleteAccount(Long id) {
         LocalRepository.getInstance()

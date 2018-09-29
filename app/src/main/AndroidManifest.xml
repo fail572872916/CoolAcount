@@ -2,24 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.weli.account">
 
-
-
     <!-- 基础模块START -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 基础模块 END -->
 
-    <!--读取外部存储-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <!--相机拍照-->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <!--读取日志-->
-    <uses-permission android:name="android.permission.READ_LOGS"/>
+
+    <!-- 读取外部存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 相机拍照 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 读取日志 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -29,26 +29,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--闪屏页-->
+        <!-- 闪屏页 -->
         <activity
             android:name=".ui.SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--主页-->
+        <!-- 主页 -->
         <activity
             android:name=".ui.MainActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".ui.ForgetPasswordActivity"></activity>
-
-        <activity android:name=".ui.LoginActivity"></activity>
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.ForgetPasswordActivity" />
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.fragment.AddAccountActivity"></activity>
     </application>
 
 </manifest>
