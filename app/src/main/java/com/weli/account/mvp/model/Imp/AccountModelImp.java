@@ -1,4 +1,5 @@
 package com.weli.account.mvp.model.Imp;
+
 import com.weli.account.base.BaseObserver;
 import com.weli.account.bean.BaseBean;
 import com.weli.account.bean.local.LocalAccount;
