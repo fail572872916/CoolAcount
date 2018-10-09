@@ -26,8 +26,8 @@ public class AccountPresenter extends IAccountPresenter implements AccountModelI
     IAccountModel iAccountModel;
     AccountView accountView;
 
-    public AccountPresenter(IAccountModel iAccountModel, AccountView accountView) {
-        this.iAccountModel = iAccountModel;
+    public AccountPresenter( AccountView accountView) {
+        this.iAccountModel=new AccountModelImp(this);
         this.accountView = accountView;
     }
 
@@ -57,7 +57,7 @@ public class AccountPresenter extends IAccountPresenter implements AccountModelI
     }
 
     @Override
-    public void onSuccess(Account bean) {
+    public void onSuccess(List<LocalAccount> bean) {
         accountView.loadDataSuccess(bean);
     }
 

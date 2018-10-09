@@ -2,7 +2,10 @@ package com.weli.account.mvp.model.view;
 
 import com.weli.account.base.BaseView;
 import com.weli.account.bean.BaseBean;
+import com.weli.account.bean.local.LocalAccount;
 import com.weli.account.bean.remote.Account;
+
+import java.util.List;
 
 /**
  * @ProjectName: CoolAcount
@@ -18,5 +21,5 @@ import com.weli.account.bean.remote.Account;
  */
 public interface AccountView extends BaseView<BaseBean> {
 
-    void loadDataSuccess(Account tData);
+    void loadDataSuccess(List<LocalAccount> tData);
 }

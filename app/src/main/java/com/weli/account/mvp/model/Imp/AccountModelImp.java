@@ -1,5 +1,4 @@
 package com.weli.account.mvp.model.Imp;
-
 import com.weli.account.base.BaseObserver;
 import com.weli.account.bean.BaseBean;
 import com.weli.account.bean.local.LocalAccount;
@@ -34,8 +33,22 @@ public class AccountModelImp implements IAccountModel {
 
     @Override
     public void getAccount() {
-        final LocalAccount note = new LocalAccount();
 
+        LocalRepository.getInstance()
+                .getAccount()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<List<LocalAccount>>() {
+                    @Override
+                    protected void onSuccees(List<LocalAccount> localAccounts) throws Exception {
+                        listener.onSuccess(localAccounts);
+                    }
+
+                    @Override
+                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+                        listener.onFailure(e);
+                    }
+                });
 
     }
 
@@ -87,7 +100,7 @@ public class AccountModelImp implements IAccountModel {
     public interface AccountOnListener {
         void onSuccess(BaseBean bean);
 
-        void onSuccess(Account bean);
+        void onSuccess(List<LocalAccount> bean);
 
         void onFailure(Throwable e);
     }

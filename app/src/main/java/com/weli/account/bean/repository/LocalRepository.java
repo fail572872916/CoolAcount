@@ -1,7 +1,6 @@
 package com.weli.account.bean.repository;
 
 
-
 import com.weli.account.bean.gen.DaoSession;
 import com.weli.account.bean.gen.LocalAccountDao;
 import com.weli.account.bean.local.LocalAccount;
@@ -55,18 +54,21 @@ public class LocalRepository {
 
     /**
      * 批量添加账单
+     *
      * @param bBills
      */
-    public void saveBBills( List<LocalAccount> bBills) {
-       mSession.getLocalAccountDao().insertInTx(bBills);
+    public void saveBBills(List<LocalAccount> bBills) {
+        mSession.getLocalAccountDao().insertInTx(bBills);
     }
-
 
 
     /******************************get**************************************/
 
-    public List<LocalAccount> getBBills() {
-        return mSession.getLocalAccountDao().queryBuilder().list();
+    public Observable<List<LocalAccount>> getAccount() {
+//        return mSession.getLocalAccountDao().queryBuilder().list()
+        QueryBuilder<LocalAccount> queryBuilder = mSession.getLocalAccountDao()
+                .queryBuilder();
+        return  queryListToRx(queryBuilder);
     }
 
     public Observable<List<LocalAccount>> getBBillByUserId(int id) {
@@ -89,11 +91,11 @@ public class LocalRepository {
     }
 
 
-
     /******************************update**************************************/
 
     /**
      * 更新账单（用于同步）
+     *
      * @param bill
      */
     public void updateBBillByBmob(LocalAccount bill) {
@@ -102,11 +104,12 @@ public class LocalRepository {
 
     /**
      * 更新账单
+     *
      * @param bill
      * @return
      */
     public Observable<LocalAccount> updateBBill(final LocalAccount bill) {
-       
+
         return Observable.create(new ObservableOnSubscribe<LocalAccount>() {
             @Override
             public void subscribe(ObservableEmitter<LocalAccount> e) throws Exception {
@@ -122,18 +125,14 @@ public class LocalRepository {
 
     /**
      * 批量删除账单（便于账单同步）
+     *
      * @param bBills
      */
-    public void deleteBills(List<LocalAccount> bBills){
+    public void deleteBills(List<LocalAccount> bBills) {
         mSession.getLocalAccountDao().deleteInTx(bBills);
     }
 
-    /**
-     * 删除本地所有账单
-     */
-    public void deleteAllBills(){
-        deleteBills(getBBills());
-    }
+
 
     public Observable<Long> deleteBBillById(Long id) {
         mSession.getLocalAccountDao().deleteByKey(id);

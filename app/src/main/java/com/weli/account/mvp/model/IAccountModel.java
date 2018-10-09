@@ -1,8 +1,6 @@
 package com.weli.account.mvp.model;
 
 import com.weli.account.bean.local.LocalAccount;
-import com.weli.account.bean.remote.Account;
-
 /**
  * @ProjectName: CoolAcount
  * @Package: com.weli.account.mvp.model
