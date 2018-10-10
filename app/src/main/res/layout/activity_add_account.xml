@@ -25,6 +25,7 @@
             android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_username"
         android:layout_width="match_parent"
@@ -58,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入新密码"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -70,15 +71,11 @@
         android:entries="@array/account_type"
         android:gravity="center"
 
-        app:theme="@style/myDropTheme"
-        >
-
-
-    </android.support.v7.widget.AppCompatSpinner>
-
+        app:theme="@style/myDropTheme" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_finish"
+
         style="@style/Button.Default"
         android:layout_marginLeft="@dimen/margin"
         android:layout_marginTop="@dimen/margin"

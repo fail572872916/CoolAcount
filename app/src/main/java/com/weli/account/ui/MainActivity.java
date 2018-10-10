@@ -19,7 +19,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.weli.account.R;
+import com.weli.account.adapter.MainFragmentPagerAdapter;
 import com.weli.account.bean.remote.MyUser;
+import com.weli.account.ui.fragment.AccountFragment;
 import com.weli.account.utils.SnackbarUtils;
 import com.weli.account.utils.ThemeManager;
 
@@ -49,7 +51,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     // Tab
     private FragmentManager mFragmentManager;
-//    private MainFragmentPagerAdapter mainFragmentPagerAdapter;
+    private MainFragmentPagerAdapter mainFragmentPagerAdapter;
 
     @Override
     protected int getLayout() {
@@ -70,19 +72,19 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 //        }
 
         //初始化ViewPager
-//        mFragmentManager = getSupportFragmentManager();
-//        mainFragmentPagerAdapter = new MainFragmentPagerAdapter(mFragmentManager);
-//        mainFragmentPagerAdapter.addFragment(new MonthDetailFragment(), "明细");
+        mFragmentManager = getSupportFragmentManager();
+        mainFragmentPagerAdapter = new MainFragmentPagerAdapter(mFragmentManager);
+        mainFragmentPagerAdapter.addFragment(new AccountFragment(), "账户");
 //        mainFragmentPagerAdapter.addFragment(new MonthChartFragment(), "报表");
 //        mainFragmentPagerAdapter.addFragment(new MonthAccountFragment(), "卡片");
 //
-//        viewPager.setAdapter(mainFragmentPagerAdapter);
+        viewPager.setAdapter(mainFragmentPagerAdapter);
 
         //初始化TabLayout
 //        tabLayout.addTab(tabLayout.newTab().setText("明细"));
 //        tabLayout.addTab(tabLayout.newTab().setText("报表"));
 //        tabLayout.addTab(tabLayout.newTab().setText("卡片"));
-//        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
 
         //初始化Toolbar
         toolbar.setTitle("CoolAccount");
@@ -102,7 +104,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             public void onClick(View view) {
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 drawer.closeDrawer(GravityCompat.START);
-                if (currentUser==null) {
+                if (currentUser == null) {
                     //用户id为0表示未有用户登陆
                     startActivityForResult(new Intent(MainActivity.this, LoginActivity.class), LOGINACTIVITY_CODE);
                 } else {
@@ -122,13 +124,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
      * 设置DrawerHeader的用户信息
      */
     public void setDrawerHeaderAccount() {
-        currentUser= BmobUser.getCurrentUser(MyUser.class);
+        currentUser = BmobUser.getCurrentUser(MyUser.class);
         //获取当前用户
         if (currentUser != null) {
             drawerTvAccount.setText(currentUser.getUsername());
             drawerTvMail.setText(currentUser.getEmail());
             Glide.with(mContext).load(currentUser.getImage()).into(drawerIv);
-        }else{
+        } else {
             drawerTvAccount.setText("账号");
             drawerTvMail.setText("点我登陆");
             drawerIv.setImageResource(R.mipmap.ic_def_icon);
@@ -216,12 +218,12 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else if (id == R.id.nav_total) {
             viewPager.setCurrentItem(2);
         } else if (id == R.id.nav_sync) {   //同步账单
-            if(currentUser==null) {
-                SnackbarUtils.show(mContext,"请先登陆");
+            if (currentUser == null) {
+                SnackbarUtils.show(mContext, "请先登陆");
             } else {
 //                BmobRepository.getInstance().syncBill(currentUser.getObjectId());
             }
-        }  else if (id == R.id.nav_setting) {   //设置
+        } else if (id == R.id.nav_setting) {   //设置
 //            startActivity(new Intent(this,SettingActivity.class));
         } else if (id == R.id.nav_about) {     //关于
 //            startActivity(new Intent(MainActivity.this, AboutActivity.class));

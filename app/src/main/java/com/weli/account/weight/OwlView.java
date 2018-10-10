@@ -55,8 +55,9 @@ public class OwlView extends View {
         this(context,null);
     }
 
+
     public OwlView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        super(context, attrs,0);
     }
 
     public OwlView(Context context, AttributeSet attrs, int defStyleAttr) {

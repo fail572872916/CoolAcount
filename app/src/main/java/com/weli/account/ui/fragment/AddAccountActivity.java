@@ -21,6 +21,8 @@ import com.weli.account.ui.BaseActivity;
 import com.weli.account.utils.SnackbarUtils;
 import com.weli.account.utils.ToastUtils;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -74,20 +76,16 @@ public class AddAccountActivity extends BaseActivity implements AccountView {
         });
     }
 
-    @Override
-    public void loadDataSuccess(Account tData) {
-        SnackbarUtils.show(this,"1111");
-    }
 
     @Override
     public void loadDataSuccess(BaseBean tData) {
-        SnackbarUtils.show(this,"222222");
+        SnackbarUtils.show(this, "222222");
     }
 
     @Override
     public void loadDataError(Throwable throwable) {
 
-        SnackbarUtils.show(this,throwable.getMessage());
+        SnackbarUtils.show(this, throwable.getMessage());
     }
 
     @OnClick(R.id.btn_finish)
@@ -109,6 +107,11 @@ public class AddAccountActivity extends BaseActivity implements AccountView {
             account1.setType(type);
             presenter.addAccount(account1);
         }
+
+    }
+
+    @Override
+    public void loadDataSuccess(List<LocalAccount> tData) {
 
     }
 }

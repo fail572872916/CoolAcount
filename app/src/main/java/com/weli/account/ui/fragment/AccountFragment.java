@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.weli.account.AccountAdapter;
 import com.weli.account.R;
+import com.weli.account.adapter.AccountAdapter;
 import com.weli.account.bean.BaseBean;
 import com.weli.account.bean.local.LocalAccount;
 import com.weli.account.mvp.model.presenter.IAccountPresenter;

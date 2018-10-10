@@ -1,4 +1,4 @@
-package com.weli.account;
+package com.weli.account.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.weli.account.R;
 import com.weli.account.bean.local.LocalAccount;
 
 import java.util.List;
@@ -54,7 +55,7 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return lists.size() == 0 ? null : lists.size();
+        return lists == null ? 0 : lists.size();
     }
 
 
