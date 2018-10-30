@@ -1,23 +1,20 @@
-package com.weli.account.ui.fragment;
+package com.weli.account.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatSpinner;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.weli.account.R;
 import com.weli.account.bean.BaseBean;
 import com.weli.account.bean.local.LocalAccount;
-import com.weli.account.bean.remote.Account;
 import com.weli.account.mvp.model.presenter.IAccountPresenter;
 import com.weli.account.mvp.model.presenter.Imp.AccountPresenter;
 import com.weli.account.mvp.model.view.AccountView;
-import com.weli.account.ui.BaseActivity;
 import com.weli.account.utils.SnackbarUtils;
 import com.weli.account.utils.ToastUtils;
 
@@ -106,6 +103,7 @@ public class AddAccountActivity extends BaseActivity implements AccountView {
             account1.setTitle(title);
             account1.setType(type);
             presenter.addAccount(account1);
+            Toast.makeText(mContext, "ddddddddd", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,9 @@ import com.weli.account.bean.local.LocalAccount;
 import com.weli.account.mvp.model.presenter.IAccountPresenter;
 import com.weli.account.mvp.model.presenter.Imp.AccountPresenter;
 import com.weli.account.mvp.model.view.AccountView;
-import com.weli.account.ui.AddAcountActivity;
+import com.weli.account.ui.AddAccountActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,9 +49,10 @@ public class AccountFragment extends BaseFragment implements AccountView {
 
     @Override
     protected void initEventAndData() {
+        localAccountList =new ArrayList<>();
         accountPresenter = new AccountPresenter(this);
         recAccountList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recAccountList.addItemDecoration(new DividerItemDecoration(getActivity(), RecyclerView.VERTICAL));
+//        recAccountList.addItemDecoration(new DividerItemDecoration(getActivity(), RecyclerView.VERTICAL));
         accountAdapter = new AccountAdapter(localAccountList, getActivity());
         recAccountList.setAdapter(accountAdapter);
         accountPresenter.getAccount();
@@ -74,7 +78,7 @@ public class AccountFragment extends BaseFragment implements AccountView {
 
     @OnClick(R.id.float_btn)
     public void onViewClicked() {
-        startActivity(new Intent(getActivity(), AddAcountActivity.class));
+        startActivity(new Intent(getActivity(), AddAccountActivity.class));
     }
 
 
@@ -85,12 +89,13 @@ public class AccountFragment extends BaseFragment implements AccountView {
 
     @Override
     public void loadDataError(Throwable throwable) {
-
+Log.d("AccountFragment", "throwable:" + throwable);
     }
 
     @Override
     public void loadDataSuccess(List<LocalAccount> tData) {
         localAccountList.clear();
+        Log.d("AccountFragment", "tData:" + tData);
         localAccountList.addAll(tData);
         accountAdapter.notifyDataSetChanged();
     }

@@ -46,10 +46,12 @@ public class AccountAdapter extends RecyclerView.Adapter<AccountAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//holder.imAccountPhoto
-        holder.tvItemAccount.setText(lists.get(position).getAccount());
-        holder.tvItemPwd.setText(lists.get(position).getPwd());
-        holder.tvTitle.setText(lists.get(position).getTitle());
+        //holder.imAccountPhoto
+        holder.tvTitle.setText("标题:" + lists.get(position).getTitle());
+        holder.tvItemAccount.setText("账号:" + lists.get(position).getAccount());
+
+        holder.tvItemPwd.setText("密码:" + lists.get(position).getPwd());
+
     }
 
 
